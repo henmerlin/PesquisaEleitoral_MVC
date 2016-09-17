@@ -22,9 +22,6 @@ namespace PesquisaEleitoral_MVC.Models
         public int? VotoId { get; set; }
         public Candidato Voto { get; set; }
 
-        [DefaultValue(false)]
-        public bool Admin { get; set; }
-
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
