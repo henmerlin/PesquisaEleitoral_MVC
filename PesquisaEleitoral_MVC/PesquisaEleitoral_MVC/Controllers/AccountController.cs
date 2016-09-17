@@ -78,7 +78,9 @@ namespace PesquisaEleitoral_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { 
+                    UserName = model.UserName, 
+                    DataNascimento = model.DataNascimento };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
