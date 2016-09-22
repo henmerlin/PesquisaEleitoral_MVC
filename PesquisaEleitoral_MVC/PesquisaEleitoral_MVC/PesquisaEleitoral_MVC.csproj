@@ -241,6 +241,9 @@
     <Content Include="Views\Candidato\Edit.cshtml" />
     <Content Include="Views\Candidato\Index.cshtml" />
     <Content Include="Views\Voto\Index.cshtml" />
+    <Content Include="Views\Voto\Sucesso.cshtml" />
+    <Content Include="Views\Voto\Erro.cshtml" />
+    <Content Include="Views\Voto\NaoEncontrado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

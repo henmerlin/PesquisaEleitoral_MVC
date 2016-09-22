@@ -28,7 +28,7 @@ namespace PesquisaEleitoral_MVC.DAL
             }
         }
 
-        public static ApplicationUser VerificarCandidatoPorNome(ApplicationUser u)
+        public static ApplicationUser VerificarUsuarioPorNome(ApplicationUser u)
         {
             return ctx.Users.FirstOrDefault(x => x.UserName.Equals(u.UserName));
         }

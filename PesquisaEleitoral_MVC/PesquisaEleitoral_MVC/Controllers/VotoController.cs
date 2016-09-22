@@ -32,31 +32,57 @@ namespace PesquisaEleitoral_MVC.Controllers
             return View();
         }
 
+
+        public ActionResult Sucesso()
+        {
+            return View();
+        }
+
+        public ActionResult Erro()
+        {
+            return View();
+        }
+
+        public ActionResult NaoEncontrado()
+        {
+            return View();
+        }
+
+ 
+
         //
         // POST: /Voto/Index
         [HttpPost]
         public ActionResult Index(VotoViewModel model)
         {
+            ApplicationUser u = new ApplicationUser();
+            Candidato c = new Candidato();
+
             try
             {
-                ApplicationUser u = new ApplicationUser();
-                u.UserName = System.Web.HttpContext.Current.User.Identity.Name;
-                u = UsuarioDAO.VerificarCandidatoPorNome(u);
                 
-                Candidato c = new Candidato();
+                u.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                u = UsuarioDAO.VerificarUsuarioPorNome(u);
                 c.Numero = model.NumeroCandidato;
                 c = CandidatoDAO.VerificarCandidatoPorNumero(c);
+
+                if (c == null)
+                {
+                    return RedirectToAction("NaoEncontrado", "Voto");
+                }
+
                 u.VotoId = c.Id;
 
                 UsuarioDAO.AlterarUsuario(u);
 
-                ModelState.AddModelError("", "Invalid username or password.");
+                return RedirectToAction("Sucesso", "Voto");
 
-                return View(model);
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Invalid username or password.");
+
+                return RedirectToAction("Erro", "Voto");
             }
         }
 
