@@ -1,6 +1,9 @@
-﻿using System;
+﻿using PesquisaEleitoral_MVC.DAL;
+using PesquisaEleitoral_MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -30,15 +33,26 @@ namespace PesquisaEleitoral_MVC.Controllers
         }
 
         //
-        // POST: /Voto/Create
+        // POST: /Voto/Index
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Index(VotoViewModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                ApplicationUser u = new ApplicationUser();
+                u.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+                u = UsuarioDAO.VerificarCandidatoPorNome(u);
+                
+                Candidato c = new Candidato();
+                c.Numero = model.NumeroCandidato;
+                c = CandidatoDAO.VerificarCandidatoPorNumero(c);
+                u.VotoId = c.Id;
 
-                return RedirectToAction("Index");
+                UsuarioDAO.AlterarUsuario(u);
+
+                ModelState.AddModelError("", "Invalid username or password.");
+
+                return View(model);
             }
             catch
             {

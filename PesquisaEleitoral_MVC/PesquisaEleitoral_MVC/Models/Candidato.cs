@@ -16,6 +16,7 @@ namespace PesquisaEleitoral_MVC.Models
 
         [Required]
         [Index(IsUnique = true)]
+        [Range(10, 99, ErrorMessage = "Digite um número válido")]
         public int Numero { get; set; }
 
     }

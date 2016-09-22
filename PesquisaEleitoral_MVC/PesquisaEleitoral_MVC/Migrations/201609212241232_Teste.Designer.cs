@@ -7,13 +7,13 @@ namespace PesquisaEleitoral_MVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AdminRemove : IMigrationMetadata
+    public sealed partial class Teste : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdminRemove));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Teste));
         
         string IMigrationMetadata.Id
         {
-            get { return "201609170024412_AdminRemove"; }
+            get { return "201609212241232_Teste"; }
         }
         
         string IMigrationMetadata.Source

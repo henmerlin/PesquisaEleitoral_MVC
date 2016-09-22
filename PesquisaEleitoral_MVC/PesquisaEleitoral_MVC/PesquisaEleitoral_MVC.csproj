@@ -165,18 +165,22 @@
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VotoController.cs" />
+    <Compile Include="DAL\BairroDAO.cs" />
+    <Compile Include="DAL\CandidatoDAO.cs" />
+    <Compile Include="DAL\UsuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609170024412_AdminRemove.cs" />
-    <Compile Include="Migrations\201609170024412_AdminRemove.Designer.cs">
-      <DependentUpon>201609170024412_AdminRemove.cs</DependentUpon>
+    <Compile Include="Migrations\201609212241232_Teste.cs" />
+    <Compile Include="Migrations\201609212241232_Teste.Designer.cs">
+      <DependentUpon>201609212241232_Teste.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bairro.cs" />
     <Compile Include="Models\Candidato.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\VotoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -236,10 +240,10 @@
     <Content Include="Views\Candidato\Details.cshtml" />
     <Content Include="Views\Candidato\Edit.cshtml" />
     <Content Include="Views\Candidato\Index.cshtml" />
+    <Content Include="Views\Voto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Voto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -249,8 +253,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609170024412_AdminRemove.resx">
-      <DependentUpon>201609170024412_AdminRemove.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609212241232_Teste.resx">
+      <DependentUpon>201609212241232_Teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
