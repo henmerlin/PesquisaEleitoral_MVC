@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace PesquisaEleitoral_MVC.Controllers
 {
+    [Authorize]
     public class VotoController : Controller
     {
         //
