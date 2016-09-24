@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PesquisaEleitoral.Models;
 using PesquisaEleitoral_MVC.Models;
+using PesquisaEleitoral_MVC.Utils;
 
 namespace PesquisaEleitoral_MVC.Controllers
 {
@@ -52,6 +53,11 @@ namespace PesquisaEleitoral_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                string nome = bairro.Nome;
+                nome = StringUtil.TratativaProva(nome);
+                bairro.Nome = nome;
+
                 db.Bairros.Add(bairro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -84,6 +90,10 @@ namespace PesquisaEleitoral_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                string nome = bairro.Nome;
+                nome = StringUtil.TratativaProva(nome);
+                bairro.Nome = nome;
+
                 db.Entry(bairro).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

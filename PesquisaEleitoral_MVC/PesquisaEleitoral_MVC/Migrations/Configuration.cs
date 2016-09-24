@@ -1,5 +1,6 @@
 namespace PesquisaEleitoral_MVC.Migrations
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,11 @@ namespace PesquisaEleitoral_MVC.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            IdentityRole r = new IdentityRole();
+            r.Name = "Administrator";
+            context.Roles.Add(r);
+
         }
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using PesquisaEleitoral_MVC.Models;
+using PesquisaEleitoral_MVC.DAL;
 
 namespace PesquisaEleitoral_MVC.Controllers
 {
@@ -66,7 +67,11 @@ namespace PesquisaEleitoral_MVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+
+            RegisterViewModel m = new RegisterViewModel();
+            m.Bairros = new SelectList(BairroDAO.RetornarLista(), "Id", "Nome");
+
+            return View(m);
         }
 
         //
@@ -80,7 +85,8 @@ namespace PesquisaEleitoral_MVC.Controllers
             {
                 var user = new ApplicationUser() { 
                     UserName = model.UserName, 
-                    DataNascimento = model.DataNascimento };
+                    DataNascimento = model.DataNascimento,
+                    BairroId = model.BairroId};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

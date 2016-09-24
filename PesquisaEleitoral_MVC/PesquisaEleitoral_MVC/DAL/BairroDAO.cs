@@ -40,5 +40,11 @@ namespace PesquisaEleitoral_MVC.DAL
         {
             return ctx.Bairros.FirstOrDefault(x => x.Id == b.Id);
         }
+
+        public static List<Bairro> RetornarLista()
+        {
+            ctx = new ApplicationDbContext();
+            return ctx.Bairros.ToList();
+        }
     }
 }

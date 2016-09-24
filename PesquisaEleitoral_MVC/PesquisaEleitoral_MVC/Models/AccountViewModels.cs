@@ -27,6 +27,7 @@ namespace PesquisaEleitoral_MVC.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
     }
 
     public class LoginViewModel
@@ -64,5 +65,14 @@ namespace PesquisaEleitoral_MVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Bairro")]
+        public int BairroId { get; set; }
+
+        public System.Web.Mvc.SelectList Bairros { get; set; }
+
+
+
     }
 }
