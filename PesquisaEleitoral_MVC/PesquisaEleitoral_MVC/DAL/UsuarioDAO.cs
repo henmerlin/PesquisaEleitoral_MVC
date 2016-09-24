@@ -18,6 +18,7 @@ namespace PesquisaEleitoral_MVC.DAL
         {
             try
             {
+                ctx = new ApplicationDbContext();
                 ctx.Entry(u).State = System.Data.Entity.EntityState.Modified;
                 ctx.SaveChanges();
                 return true;
@@ -30,6 +31,7 @@ namespace PesquisaEleitoral_MVC.DAL
 
         public static ApplicationUser VerificarUsuarioPorNome(ApplicationUser u)
         {
+            ctx = new ApplicationDbContext();
             return ctx.Users.FirstOrDefault(x => x.UserName.Equals(u.UserName));
         }
 

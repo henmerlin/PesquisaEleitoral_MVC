@@ -245,6 +245,7 @@
     <Content Include="Views\Voto\Sucesso.cshtml" />
     <Content Include="Views\Voto\Erro.cshtml" />
     <Content Include="Views\Voto\NaoEncontrado.cshtml" />
+    <Content Include="Views\Bairro\ErroBairroUtilizado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

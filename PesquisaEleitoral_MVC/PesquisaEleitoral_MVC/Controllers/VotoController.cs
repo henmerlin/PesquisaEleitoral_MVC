@@ -12,6 +12,8 @@ namespace PesquisaEleitoral_MVC.Controllers
     [Authorize]
     public class VotoController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         //
         // GET: /Voto/
         public ActionResult Index()
@@ -61,7 +63,6 @@ namespace PesquisaEleitoral_MVC.Controllers
 
             try
             {
-                
                 u.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                 u = UsuarioDAO.VerificarUsuarioPorNome(u);
                 c.Numero = model.NumeroCandidato;

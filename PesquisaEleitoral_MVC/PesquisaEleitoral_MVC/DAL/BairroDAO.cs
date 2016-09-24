@@ -16,7 +16,6 @@ namespace PesquisaEleitoral_MVC.DAL
             ctx = new ApplicationDbContext();
         }
 
-
        public static bool AdicionarBairro(Bairro b)
         {
             try
@@ -33,11 +32,13 @@ namespace PesquisaEleitoral_MVC.DAL
 
         public static Bairro VerificarBairroPorNome(Bairro b)
         {
+            ctx = new ApplicationDbContext();
             return ctx.Bairros.FirstOrDefault(x => x.Nome.Equals(b.Nome));
         }
 
         public static Bairro VerificarBairroPorId(Bairro b)
         {
+            ctx = new ApplicationDbContext();
             return ctx.Bairros.FirstOrDefault(x => x.Id == b.Id);
         }
 

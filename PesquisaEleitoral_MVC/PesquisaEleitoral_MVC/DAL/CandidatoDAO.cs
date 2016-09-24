@@ -20,6 +20,7 @@ namespace PesquisaEleitoral_MVC.DAL
         {
             try
             {
+                ctx = new ApplicationDbContext();
                 ctx.Candidatos.Add(c);
                 ctx.SaveChanges();
                 return true;
@@ -32,16 +33,19 @@ namespace PesquisaEleitoral_MVC.DAL
 
         public static Candidato VerificarCandidatoPorNome(Candidato c)
         {
+            ctx = new ApplicationDbContext();
             return ctx.Candidatos.FirstOrDefault(x => x.Nome.Equals(c.Nome));
         }
 
         public static Candidato VerificarCandidatoPorNumero(Candidato c)
         {
+            ctx = new ApplicationDbContext();
             return ctx.Candidatos.FirstOrDefault(x => x.Numero == c.Numero);
         }
 
         public static List<Candidato> RetornarLista()
         {
+            ctx = new ApplicationDbContext();
             return ctx.Candidatos.ToList();
         }
 

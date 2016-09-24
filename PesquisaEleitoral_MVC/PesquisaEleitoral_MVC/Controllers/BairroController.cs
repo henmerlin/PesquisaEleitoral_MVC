@@ -101,6 +101,11 @@ namespace PesquisaEleitoral_MVC.Controllers
             return View(bairro);
         }
 
+        public ActionResult ErroBairroUtilizado()
+        {
+            return View();
+        }
+
         // GET: /Bairro/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -122,8 +127,16 @@ namespace PesquisaEleitoral_MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Bairro bairro = db.Bairros.Find(id);
-            db.Bairros.Remove(bairro);
-            db.SaveChanges();
+            try
+            {
+                db.Bairros.Remove(bairro);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("ErroBairroUtilizado", "Bairro");
+            }
+           
             return RedirectToAction("Index");
         }
 
