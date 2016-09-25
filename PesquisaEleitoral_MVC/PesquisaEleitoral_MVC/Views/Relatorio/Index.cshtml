@@ -16,7 +16,8 @@
             var data = google.visualization.arrayToDataTable(@Html.Raw(ViewBag.Data));
 
             var options = {
-                title: ''
+                title: '',
+                legend: { position: "bottom" },
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -26,6 +27,6 @@
     </script>
 </head>
 <body>
-    <div id="piechart" style="width: 100%; height: 550px;"></div>
+    <div class="container" id="piechart" style="width: 100%; height: 550px;"></div>
 </body>
 </html>

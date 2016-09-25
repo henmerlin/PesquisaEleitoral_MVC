@@ -15,11 +15,9 @@
       var view = new google.visualization.DataView(data);
 
       var options = {
-          width: 600,
-          height: 400,
-          legend: { position: 'top', maxLines: 3 },
           bar: { groupWidth: '75%' },
           isStacked: true,
+          legend: { position: "bottom" }
       };
 
       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));

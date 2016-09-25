@@ -5,25 +5,30 @@
 <h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" charset="utf-8">
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable(@Html.Raw(ViewBag.Data));
-      var view = new google.visualization.DataView(data);
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        google.charts.load("current", { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
 
-      var options = {
-          width: 600,
-          height: 400,
-          legend: { position: 'top', maxLines: 3 },
-          bar: { groupWidth: '75%' },
-          isStacked: true,
-      };
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(@Html.Raw(ViewBag.Data));
+            var view = new google.visualization.DataView(data);
 
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-      chart.draw(view, options);
-  }
-</script>
-<div id="columnchart_values" style="width: 100%; height: 300px;"></div>
+            var options = {
+                bar: { groupWidth: '75%' },
+                isStacked: true,
+                legend: { position: "bottom" }
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+    </script>
+    </head>
+<body>
+    <div class="container" id="columnchart_values" style="width: 100%; height: 300px;"></div>
+</body>
+</html>
