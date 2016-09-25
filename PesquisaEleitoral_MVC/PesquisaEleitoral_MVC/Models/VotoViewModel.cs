@@ -13,5 +13,8 @@ namespace PesquisaEleitoral_MVC.Models
         [Range(10, 99, ErrorMessage = "Digite um número válido")]
         public int NumeroCandidato { get; set; }
 
+        public List<Candidato> Candidatos { get; set; }
+
+
     }
 }

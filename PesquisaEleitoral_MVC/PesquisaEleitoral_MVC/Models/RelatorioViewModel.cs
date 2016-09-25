@@ -43,8 +43,6 @@ namespace PesquisaEleitoral_MVC.Models
             sb.Append("[");
             sb.Append("['Candidato', 'Votos'],");
 
-            
-
             foreach (var item in Candidatos)
             {
                 sb.Append("[\'" + item.Nome + "\'," + item.Eleitores.Count + "],");

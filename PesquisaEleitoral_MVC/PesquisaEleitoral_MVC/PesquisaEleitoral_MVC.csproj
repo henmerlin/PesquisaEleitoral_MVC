@@ -255,6 +255,7 @@
     <Content Include="Views\Relatorio\Index.cshtml" />
     <Content Include="Views\Relatorio\FaixaEtaria.cshtml" />
     <Content Include="Views\Relatorio\Bairros.cshtml" />
+    <Content Include="Views\Candidato\Erro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

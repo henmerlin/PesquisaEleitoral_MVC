@@ -18,7 +18,11 @@ namespace PesquisaEleitoral_MVC.Controllers
         // GET: /Voto/
         public ActionResult Index()
         {
-            return View();
+            VotoViewModel v = new VotoViewModel();
+            CandidatoDAO dao = new CandidatoDAO();
+            v.Candidatos = dao.RetornarLista();
+
+            return View(v);
         }
 
         //

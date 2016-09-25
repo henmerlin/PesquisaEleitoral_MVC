@@ -22,6 +22,12 @@ namespace PesquisaEleitoral_MVC.Controllers
             return View(db.Candidatos.ToList());
         }
 
+        // GET: /Candidato/Erro
+        public ActionResult Erro()
+        {
+            return View();
+        }
+
         // GET: /Candidato/Details/5
         public ActionResult Details(int? id)
         {
@@ -119,9 +125,17 @@ namespace PesquisaEleitoral_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Candidato candidato = db.Candidatos.Find(id);
-            db.Candidatos.Remove(candidato);
-            db.SaveChanges();
+            try
+            {
+                Candidato candidato = db.Candidatos.Find(id);
+                db.Candidatos.Remove(candidato);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Erro");
+            }
+           
             return RedirectToAction("Index");
         }
 
