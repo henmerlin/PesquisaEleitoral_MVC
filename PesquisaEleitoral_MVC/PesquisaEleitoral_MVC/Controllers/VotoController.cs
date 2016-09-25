@@ -60,13 +60,15 @@ namespace PesquisaEleitoral_MVC.Controllers
         {
             ApplicationUser u = new ApplicationUser();
             Candidato c = new Candidato();
+            UsuarioDAO usuario = new UsuarioDAO();
+            CandidatoDAO candidato = new CandidatoDAO();
 
             try
             {
                 u.UserName = System.Web.HttpContext.Current.User.Identity.Name;
-                u = UsuarioDAO.VerificarUsuarioPorNome(u);
+                u = usuario.VerificarUsuarioPorNome(u);
                 c.Numero = model.NumeroCandidato;
-                c = CandidatoDAO.VerificarCandidatoPorNumero(c);
+                c = candidato.VerificarCandidatoPorNumero(c);
 
                 if (c == null)
                 {
@@ -75,7 +77,7 @@ namespace PesquisaEleitoral_MVC.Controllers
 
                 u.VotoId = c.Id;
 
-                UsuarioDAO.AlterarUsuario(u);
+                usuario.AlterarUsuario(u);
 
                 return RedirectToAction("Sucesso", "Voto");
 

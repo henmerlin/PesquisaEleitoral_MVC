@@ -8,7 +8,7 @@ namespace PesquisaEleitoral_MVC.DAL
 {
     public class CandidatoDAO
     {
-        private static ApplicationDbContext ctx;
+        private ApplicationDbContext ctx;
 
         public CandidatoDAO()
         {
@@ -16,11 +16,10 @@ namespace PesquisaEleitoral_MVC.DAL
         }
 
 
-        public static bool AdicionarCandidato(Models.Candidato c)
+        public bool AdicionarCandidato(Models.Candidato c)
         {
             try
             {
-                ctx = new ApplicationDbContext();
                 ctx.Candidatos.Add(c);
                 ctx.SaveChanges();
                 return true;
@@ -31,25 +30,19 @@ namespace PesquisaEleitoral_MVC.DAL
             }
         }
 
-        public static Candidato VerificarCandidatoPorNome(Candidato c)
+        public Candidato VerificarCandidatoPorNome(Candidato c)
         {
-            ctx = new ApplicationDbContext();
             return ctx.Candidatos.FirstOrDefault(x => x.Nome.Equals(c.Nome));
         }
 
-        public static Candidato VerificarCandidatoPorNumero(Candidato c)
+        public Candidato VerificarCandidatoPorNumero(Candidato c)
         {
-            ctx = new ApplicationDbContext();
             return ctx.Candidatos.FirstOrDefault(x => x.Numero == c.Numero);
         }
 
-        public static List<Candidato> RetornarLista()
+        public List<Candidato> RetornarLista()
         {
-            ctx = new ApplicationDbContext();
             return ctx.Candidatos.ToList();
         }
-
-
-
     }
 }
