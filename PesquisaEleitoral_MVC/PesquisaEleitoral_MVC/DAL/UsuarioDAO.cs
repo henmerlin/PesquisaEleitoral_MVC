@@ -28,6 +28,11 @@ namespace PesquisaEleitoral_MVC.DAL
             }
         }
 
+        public List<ApplicationUser> ListarVotosPorCandidato(Candidato c)
+        {
+            return ctx.Users.Where(x => x.Voto.Id == c.Id).ToList();
+        }
+
         public ApplicationUser VerificarUsuarioPorNome(ApplicationUser u)
         {
             return ctx.Users.FirstOrDefault(x => x.UserName.Equals(u.UserName));

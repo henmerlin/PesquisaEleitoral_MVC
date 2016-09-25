@@ -67,11 +67,14 @@ namespace PesquisaEleitoral_MVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-
-            RegisterViewModel m = new RegisterViewModel();
-            m.Bairros = new SelectList(BairroDAO.RetornarLista(), "Id", "Nome");
-
-            return View(m);
+            if (ModelState.IsValid)
+            {
+                RegisterViewModel m = new RegisterViewModel();
+                BairroDAO b = new BairroDAO();
+                m.Bairros = new SelectList(b.RetornarLista(), "Id", "Nome");
+                return View(m);
+            }
+            return View();
         }
 
         //

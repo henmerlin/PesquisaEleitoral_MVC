@@ -26,13 +26,17 @@ namespace PesquisaEleitoral_MVC.Utils
         public static string TratativaProva(string text)
         {
             text = RemoveAcentos(text);
-            text = text.TrimStart().TrimEnd();
+            text = RemoveEspacos(text);
+            // Upper
+            return text.ToUpper();
+        }
 
+        public static string RemoveEspacos(string text)
+        {
+            text.TrimStart().TrimEnd();
             RegexOptions options = RegexOptions.None;
             Regex regex = new Regex("[ ]{2,}", options);
-            text = regex.Replace(text, " ");
-
-            return text.ToUpper();
+            return text = regex.Replace(text, " ");
         }
 
     }

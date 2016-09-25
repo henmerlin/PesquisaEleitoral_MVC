@@ -30,6 +30,7 @@ namespace PesquisaEleitoral_MVC.DAL
             }
         }
 
+
         public Candidato VerificarCandidatoPorNome(Candidato c)
         {
             return ctx.Candidatos.FirstOrDefault(x => x.Nome.Equals(c.Nome));

@@ -1,0 +1,31 @@
+﻿@model PesquisaEleitoral_MVC.Models.RelatorioViewModel
+@{
+    ViewBag.Title = "Votos";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable(@Html.Raw(ViewBag.Data));
+
+            var options = {
+                title: ''
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="piechart" style="width: 100%; height: 550px;"></div>
+</body>
+</html>
