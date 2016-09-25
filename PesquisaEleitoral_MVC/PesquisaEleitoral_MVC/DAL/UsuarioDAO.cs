@@ -1,6 +1,7 @@
 ﻿using PesquisaEleitoral_MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -30,7 +31,7 @@ namespace PesquisaEleitoral_MVC.DAL
 
         public List<ApplicationUser> ListarVotosPorCandidato(Candidato c)
         {
-            return ctx.Users.Where(x => x.Voto.Id == c.Id).ToList();
+            return ctx.Users.Include("Bairro").Where(x => x.Voto.Id == c.Id).ToList();
         }
 
         public ApplicationUser VerificarUsuarioPorNome(ApplicationUser u)

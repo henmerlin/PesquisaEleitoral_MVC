@@ -29,6 +29,15 @@ namespace PesquisaEleitoral_MVC.Controllers
 
             return View(m);
         }
+
+        public ActionResult Bairros()
+        {
+            RelatorioViewModel m = new RelatorioViewModel();
+
+            ViewBag.Data = m.RelatorioBairros();
+
+            return View(m);
+        }
     }
 
 
