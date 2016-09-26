@@ -4,6 +4,23 @@
 }
 
 <h2>@ViewBag.Title.</h2>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DataNascimento').datepicker({
+            dateFormat: "dd/mm/yyyy",
+            showStatus: true,
+            showWeeks: true,
+            currentText: 'Now',
+            autoSize: true,
+            gotoCurrent: true,
+            showAnim: 'blind',
+            highlightWeek: true
+        });
+    });
+</script>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -41,7 +58,7 @@
         <div class="form-group">
         @Html.LabelFor(m => m.BairroId, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.BairroId, Model.Bairros, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.BairroId, (SelectList)Model.Bairros, new { @class = "form-control" })
         </div>
     </div>
 
