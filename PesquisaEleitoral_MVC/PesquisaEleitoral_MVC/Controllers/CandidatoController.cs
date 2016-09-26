@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PesquisaEleitoral_MVC.Models;
 using PesquisaEleitoral_MVC.Utils;
+using PesquisaEleitoral_MVC.DAL;
 
 namespace PesquisaEleitoral_MVC.Controllers
 {
@@ -49,6 +50,12 @@ namespace PesquisaEleitoral_MVC.Controllers
             return View();
         }
 
+        // GET: /Candidato/ErroExistente
+        public ActionResult ErroExistente()
+        {
+            return View();
+        }
+
         // POST: /Candidato/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -56,17 +63,28 @@ namespace PesquisaEleitoral_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id,Nome,Numero")] Candidato candidato)
         {
+            CandidatoDAO dao = new CandidatoDAO();
+
             if (ModelState.IsValid)
             {
                 string nome = candidato.Nome;
                 nome = StringUtil.TratativaProva(nome);
                 candidato.Nome = nome;
 
-                db.Candidatos.Add(candidato);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                Candidato c1 = dao.VerificarCandidatoPorNome(candidato);
+                Candidato c2 = dao.VerificarCandidatoPorNumero(candidato);
 
+                if(c1 == null && c2 == null)
+                {
+                    db.Candidatos.Add(candidato);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("ErroExistente");
+                }
+            }
             return View(candidato);
         }
 

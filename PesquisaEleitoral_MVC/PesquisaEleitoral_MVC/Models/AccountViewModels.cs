@@ -74,7 +74,5 @@ namespace PesquisaEleitoral_MVC.Models
 
         public System.Web.Mvc.SelectList Bairros { get; set; }
 
-
-
     }
 }
