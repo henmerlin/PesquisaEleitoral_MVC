@@ -53,6 +53,7 @@ namespace PesquisaEleitoral_MVC.Models
 
         [Required]
         [Display(Name = "Data de Nascimento")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataNascimento { get; set; }
 
         [Required]
